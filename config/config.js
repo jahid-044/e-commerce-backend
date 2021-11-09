@@ -6,6 +6,6 @@ export const environment = {
     },
     production: {
         serverURL: `http://localhost:${PORT}/`,
-        dbString: 'mongodb+srv://root:anik0104@cluster0.hgvwf.mongodb.net/users-crud?retryWrites=true&w=majority'
+        dbString: 'mongodb+srv://root:1234@cluster0.cgc8z.mongodb.net/hapi?retryWrites=true&w=majority'
     }
 }
