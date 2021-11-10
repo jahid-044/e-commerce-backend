@@ -9,9 +9,7 @@ const init = async () => {
 
     const app = Hapi.server({
         port: PORT,
-        routes:{
-            cors:true
-        }
+        host:"localhost",
     });
     
     const server = new ApolloServer({
@@ -25,10 +23,10 @@ const init = async () => {
     });
 
     await server.start();
-    await server.applyMiddleware({ app, cors: true });
+    await server.applyMiddleware({app});
     await app.start();
 
-    console.log('Server running on port 4000');
+    console.log('Server running on %s', app.info.uri);
 };
 
-init().then(r => console.log('server started'));
+init().then(r => console.log('Server started'));
