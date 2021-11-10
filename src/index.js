@@ -23,7 +23,7 @@ const init = async () => {
     });
 
     await server.start();
-    await server.applyMiddleware({ app, cors: true });
+    await server.applyMiddleware({app});
     await app.start();
 
     console.log('Server running on %s', app.info.uri);
