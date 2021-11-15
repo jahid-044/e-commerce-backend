@@ -3,8 +3,9 @@ import { Schema } from "mongoose";
 export const shopSchema = new Schema({
     shopId:{
         type: Schema.Types.ObjectId,
-        ref: "user"
-    },
+        ref: "user",
+        required:true   
+     },
     shopName:{
         type: String
     },

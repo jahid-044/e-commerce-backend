@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const { environment } = require('../config/config');
-const { productSchema } = require('./productSchema');
-const { shopSchema } = require('./shopSchema');
-const { usersma } = require('./userSchema');
+const { productSchema } = require('./schema/productSchema');
+const { shopSchema } = require('./schema/shopSchema');
+const { userSchema } = require('./schema/userSchema');
 const env = process.env.NODE_ENV || "development";
 
 
@@ -16,7 +16,7 @@ database.on('error', ()=> {
     console.log("Error in connection");
 });
 
-const users = mongoose.model('user',usersma);
+const users = mongoose.model('user',userSchema);
 const products = mongoose.model('product',productSchema);
 const shops =mongoose.model('shop',shopSchema);
 

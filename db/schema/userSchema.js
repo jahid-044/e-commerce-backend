@@ -11,9 +11,9 @@ export const userSchema = new Schema({
    },
    passward:{
        type: String,
-       select: false,
-       required: true
+       select: false
    },
+   
    userRole:{
        type: String,
        enum: ['SHOPOWNER','CUSTOMER']

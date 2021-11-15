@@ -1,8 +1,8 @@
-export const PORT = 4000;
+export const PORT = 4001;
 export const environment = {
     development: {
         serverURL: `http://localhost:${PORT}/`,
-        dbString: 'mongodb+srv://root:1234@cluster0.cgc8z.mongodb.net/hapi?retryWrites=true&w=majority'
+        dbString: 'mongodb://localhost:27017/eCommersDb'
     },
     production: {
         serverURL: `http://localhost:${PORT}/`,
