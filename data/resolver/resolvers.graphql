@@ -1,6 +1,6 @@
-
-import signUp from './signUp'
 import signIn from './signIn'
+import createUser from './createUser'
+import createShop from './createShop'
 
 import {users,products,shops} from '../../db/dataBaseConnector.js'
 
@@ -9,7 +9,8 @@ export const resolvers={
     Mutation:{
 
         signUp: async(root,{info},context)=>{
-            return signUp(info,context)
+            const user_id = await createUser(info,context)
+            return createShop(user_id,info,context)
         },
         signIn: async(root,{signInInput}) => {
             return signIn(signInInput)
