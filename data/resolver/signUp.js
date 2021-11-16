@@ -12,15 +12,15 @@ export default async function signUp(info,context){
         newUser.id=newUser._id;
         newUser.save((err)=>{console.log(err)});
     
-        // const newShop = new shops({
-        //     shopName:info.shopName,
-        //     ownerName:info.ownerName,
-        //     contact:info.contact,
-        //     adress:info.adress,
-        //     tinNo:info.tinNo
-        // })
-        // newShop.id=newShop._id;
-        // newShop.save();
+        const newShop = new shops({
+            shopName:info.shopName,
+            ownerName:info.ownerName,
+            contact:info.contact,
+            adress:info.adress,
+            tinNo:info.tinNo
+        })
+        newShop.id=newShop._id;
+        newShop.save();
         return true;
         
     } catch (error) {

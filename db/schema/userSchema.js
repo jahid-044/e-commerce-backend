@@ -9,7 +9,7 @@ export const userSchema = new Schema({
        required: true,
        unique:true
    },
-   passward:{
+   password:{
        type: String,
        select: false
    },
@@ -22,10 +22,10 @@ export const userSchema = new Schema({
 });
 
 userSchema.pre('save', async function(next){
-    this.passward = await bcrypt.hash(this.passward,7);
+    this.password = await bcrypt.hash(this.password,7);
     next();
 });
 
-userSchema.methods.matchPasswards = async(givenPassward, actualPassward) => {
-    return await bcrypt.compare(givenPassward,actualPassward);
+userSchema.methods.matchPasswords = async(givenPassword, actualPassword) => {
+    return await bcrypt.compare(givenPassword,actualPassword);
 }
