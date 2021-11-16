@@ -8,7 +8,7 @@ export default async function createShop(user_id,info,context){
             shopName:info.shopName,
             ownerName:info.ownerName,
             contact:info.contact,
-            adress:info.adress,
+            address:info.address,
             tinNo:info.tinNo
         })
         newShop.save();

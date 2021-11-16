@@ -9,7 +9,7 @@ export const typeDefs = gql`
         shopName:String
         ownerName:String
         contact:Int
-        adress:String
+        address:String
         tinNo:Int
     }
 

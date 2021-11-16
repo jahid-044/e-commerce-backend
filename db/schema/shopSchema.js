@@ -16,7 +16,7 @@ export const shopSchema = new Schema({
         type: Number,
         required: true
     },
-    adress:{
+    address:{
         type: String
     },
     tinNo:{
