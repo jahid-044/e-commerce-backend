@@ -13,14 +13,14 @@ export const shopSchema = new Schema({
         type: String
     },
     contact:{
-        type: Number,
+        type: String,
         required: true
     },
     address:{
         type: String
     },
     tinNo:{
-        type: Number,
+        type: String,
         unique: true
     }
 

@@ -8,9 +8,9 @@ export const typeDefs = gql`
         userRole:String
         shopName:String
         ownerName:String
-        contact:Int
+        contact:String
         address:String
-        tinNo:Int
+        tinNo:String
     }
 
     input SignInInput{
