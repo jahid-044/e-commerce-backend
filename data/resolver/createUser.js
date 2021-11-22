@@ -1,25 +1,19 @@
-import { Users } from '../../db/dbConnector.js'
-const isAuthenticated = require('./../../authentication/isAuthenticated')
-const {  ValidationError, ForbiddenError } = require('apollo-server-hapi')
+import { users } from '../../db/dataBaseConnector.js'
 
-export default async function CreateUser(createUserInput, context) {
-    const userInformation = await isAuthenticated.isValidUser(context.auth)
-    if (!userInformation) throw new ValidationError('Unauthorized user')
-    else if (userInformation.role !== 'TEACHER') throw new ForbiddenError('Your are not permitted to do this')
-    else {
-        const newUser = new Users({
-            username: createUserInput.username,
-            email: createUserInput.email,
-            password: createUserInput.password,
-            role: createUserInput.role
-        })
-        newUser.id = newUser._id
+export default async function createUser(info,context){
 
-        return new Promise((resolve, reject) => {
-            newUser.save((err) => {
-                if (err) reject(err)
-                else resolve(newUser)
-            })
+    try {
+        console.log(info)
+        const newUser = new users({
+            email:info.email,
+            password:info.password,
+            userRole:info.userRole
         })
+        newUser.save();
+        return newUser._id;
+        
+    } catch (error) {
+        return false;
     }
+    
 }

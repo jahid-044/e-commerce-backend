@@ -1,30 +1,31 @@
 import { Schema } from "mongoose";
-import bcrypt from "bcryptjs"
+import bcrypt from "bcryptjs";
 
 export const userSchema = new Schema({
-    username:{
-        type: String,
-        unique: true,
-        required:true
-    },
-    email:{
-        type:String
-    },
-    password:{
-        type:String,
-        select: false
-    },
-    role:{
-        type:String
-    }
-})
 
-userSchema.pre('save', async function(next) {
-    this.password = await bcrypt.hash(this.password, 7)
-    next()
-})
+   email:{
+       type: String,
+       lowercase: true,
+       required: true,
+       unique:true
+   },
+   password:{
+       type: String,
+       select: false
+   },
+   
+   userRole:{
+       type: String,
+       enum: ['SHOPOWNER','CUSTOMER']
+   }
+
+});
+
+userSchema.pre('save', async function(next){
+    this.password = await bcrypt.hash(this.password,7);
+    next();
+});
 
 userSchema.methods.matchPasswords = async(givenPassword, actualPassword) => {
-    return await bcrypt.compare(givenPassword, actualPassword)
+    return await bcrypt.compare(givenPassword,actualPassword);
 }
-

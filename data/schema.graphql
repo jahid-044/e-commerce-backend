@@ -1,85 +1,36 @@
 import { gql } from 'apollo-server-hapi';
 
 export const typeDefs = gql`
-    input CommentInput{
-        postId:String
-        commentDetails:String
-    }
 
-    input PostInput{
-        title: String
-        details:String
-    }
-    
-    input UpdatedDetails{
-        details:String
-    }
-
-    input PostId{
-        _id:ID
-    }
-
-    input UserId{
-        _id:ID
-    }
-
-    input CreateUserInput{
-        username: String
-        email: String
-        password: String
-        role: String
+    input InputInfo{
+        email:String
+        password:String
+        userRole:String
+        shopName:String
+        ownerName:String
+        contact:String
+        address:String
+        tinNo:String
     }
 
     input SignInInput{
-        username: String
-        password: String
-    }
-
-    type Post{
-       _id:String
-       title:String
-       owner:String
-       details:String
-       comments: [Comment]
-       time: String
-    }
-
-    type Comment{
-        postId: String
-        commentor: String
-        commentDetails: String
-    }
-
-    type User{
-        _id:String
-        username: String
         email: String
         password: String
-        role: String
+        userRole:String
     }
 
     type SignedIn{
         JWT: String
-        username: String
-        role: String
+        email: String
+        userRole:String
     }
 
-    
-    type Query{
-        getAllPost:[Post]
-        getPostById(postId: PostId):Post
-        getAllStudent:[User]
-        getAllTeacher:[User]
+    type Query
+    {
+        dummy:String
     }
-
     type Mutation{
-        createComment(commentInput: CommentInput): Comment
-        createPost(postInput: PostInput): Post
-        updatePost(postId: PostId, updatedDetails:UpdatedDetails):Boolean
-        deletePost(postId: PostId): Boolean
-        createUser(createUserInput: CreateUserInput): User
-        updateUser(userID: UserId): Boolean
-        deleteUser(userId: UserId): Boolean
+        signUp(info:InputInfo):Boolean
         signIn(signInInput: SignInInput): SignedIn
     }
 `;
